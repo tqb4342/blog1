@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="boke.po">
+	<class name="Blog" table="blog">
+		<id name="bid" type="integer" column="bid">
+			<generator class="increment"/>
+		</id> 
+		<property name="use_uid" column="use_uid" type="integer" not-null="true"/> 
+		<property name="title" column="title" type="string" not-null="true"/>  
+		<property name="texts" column="texts" type="text" not-null="true"/>  
+		<property name="maincontent" column="maincontent" type="text" not-null="true"/>  
+		<property name="viewed" column="viewed" type="integer" not-null="true"/>  
+		<property name="releasedate" column="releasedate" type="date" not-null="true"/>  
+		<property name="commentcounts" column="commentcounts" type="integer" not-null="true"/>  
+		<property name="author" column="author" type="string" not-null="true"/> 
+		<property name="tid" column="tid" type="integer" not-null="true"/>  
+	<many-to-one name="user" class="boke.po.User" cascade="save-update" column="use_uid" insert="false" update="false" lazy="false"  not-null="true"/>
+	<many-to-one name="btypes" class="boke.po.Btypes" cascade="save-update" column="tid" insert="false" update="false" lazy="false"  not-null="true"/>
+	<set name="com" cascade="delete" lazy="false"  inverse="true" order-by="bid desc" >
+			<key column="bid" update="false" not-null="true"/>
+			<one-to-many class="boke.po.Comments"  ></one-to-many>
+	</set> 
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="boke.po">
+	<class name="Resource" table="resource">
+		<id name="rid" type="string" column="rid">
+			<generator class="uuid"/>
+		</id>
+
+		<property name="rname" column="rname" type="string" />
+		<property name="lunname" column="lunname" type="string" />
+		<property name="uploader" column="uploader" type="string" />
+		<property name="uploaddate" column="uploaddate" type="string" />
+		<!-- 多个资源对应一个资源类型 -->
+		<many-to-one name="resourcetype" class="ResourceType" cascade="save-update" lazy="false"  column="rtid"/>
+				 
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>林业百科</title>
+	<link rel="SHORTCUT ICON" href="static/images/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="static/css/base.css">
+	<link rel="stylesheet" type="text/css" href="static/css/result.css">
+
+	<script type="text/javascript" src="static/js/jquery.js"></script>
+    <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="static/js/modal.js"></script>
+	<script type="text/javascript" src="static/js/bootstrap-typeahead.js"></script>
+	<script type="text/javascript" src="static/js/underscore-min.js"></script>
+<body>
+
+    <div style="margin: 50px 50px">
+        <label for="product_search">Product Search: </label>
+        <input id="product_search" type="text" data-provide="typeahead">
+    </div>
+   
+
+
+    <script>
+        $(document).ready(function ($) {
+            // Workaround for bug in mouse item selection
+            $.fn.typeahead.Constructor.prototype.blur = function () {
+                var that = this;
+                setTimeout(function () { that.hide() }, 250);
+            };
+
+            var products = [
+            {
+                id: 0,
+                name: "Deluxe Bicycle",
+                price: 499.98
+            },
+            {
+                id: 1,
+                name: "Super Deluxe Trampoline",
+                price: 134.99
+            },
+            {
+                id: 2,
+                name: "Super Duper Scooter",
+                price: 49.95
+            }
+            ];
+
+            $('#product_search').typeahead({
+                source: function (query, process) {
+                    var results = _.map(products, function (product) {
+                        return product.name;
+                    });
+                    process(results);
+                },
+
+                highlighter: function (item) {
+                    return item;
+                },
+
+                updater: function (item) {
+                    console.log("'" + item + "' selected.");
+                    return item;
+                }
+            });
+        })
+    </script>
+
+</body>
+</html>

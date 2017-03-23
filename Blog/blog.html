@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Programmer Blog</title>
+<link href="static/css/bootstrap.min.css" rel="stylesheet">
+<link href="static/css/index.css" rel="stylesheet">
+<link href="static/css/home.css" rel="stylesheet">
+<link href="static/css/blog.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="static/css/result.css">
+<script type="text/javascript" src="static/js/jquery.js"></script>
+ <script type="text/javascript" src="static/js/bootstrap.min.js"></script>   
+<script type="text/javascript" src="static/js/blog.js"></script>
+<script type="text/javascript" src="static/js/index.js"></script>
+<script type="text/javascript" src="static/js/bootstrap-typeahead.js"></script>  
+<script type="text/javascript" src="static/js/underscore-min.js"></script>
+<script type='text/javascript' src='dwr/engine.js'></script>  
+<script type='text/javascript' src='dwr/interface/UserManager.js'></script>
+<script type='text/javascript' src='dwr/interface/BlogManager.js'></script>
+<script type='text/javascript' src='dwr/util.js'></script>
+<script type='text/javascript' src='dwr/interface/BtypesManager.js'></script>
+
+</head>
+<body>
+
+<div class="wrapper">
+		<div id="head-box" class="search-head-box">
+
+	<nav  class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Programmer Blog</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav menu">
+        <li class="active"><a href="#" id="blog-home" >Home <span class="sr-only">(current)</span></a></li>
+        <li><a id="blog-tuijian" href="#">热门推荐</a></li>
+      <!--    <li><a id="blog-shouchang" href="#"><input type='hidden' id='login1' value="nouser">我的收藏</a></li>--> 
+      <!--    <li><a id="my-blog" href="#"><input type='hidden' id='login'>我的博客</a></li> --> 
+           <li><a id="download" href="#">资源下载</a></li>
+      <!--     <li><a id="blog-message" href="#"><input type='hidden' id='login'>信息管理</a></li> --> 
+            <li><a id="write-blog" href="#">写博客</a></li>
+        
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+       <!--    <input type="text" id="Search-blog" class="form-control" placeholder="Search"> 
+       <input id="Search-blog" type="text" data-provide="typeahead"> -->
+       <input type="email" class="form-control input-lg maincontent1-form" id="Search-blog" placeholder="search"  data-provide="typeahead">
+        </div>
+        <button type="button" id="button-blog" class="btn btn-default">搜&nbsp;&nbsp;索</button>
+          <input type="hidden" id="username-blog" class="form-control" >
+          <input type="hidden" id="password-blog" class="form-control" >
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+         <a href="#" id="manage-username-a" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span  class="caret"></span></a> 
+        
+          <ul id="dropdown-user" class="dropdown-menu">
+            <li><a id="my-blog" href="#">我的博客</a></li>
+             <li><a id="blog-message" href="#">修改信息</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="index.html">退出当前账号</a></li>
+          </ul>
+        </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</div>
+</div>
+
+<div class="main_right">  
+<div class="side_nav">
+    <ul id="blog-type">
+   
+    </ul>
+</div>
+</div>
+
+
+
+  <!-- 显示博文的超链接 -->
+  <div class="main_center">
+       <div id="blog-href" class="container">
+     	 	<div class="blog_list" id=blog-text>
+      
+    </div>
+       </div>
+       <nav id="fenye-blog" style="display:block">
+  <ul id="shangyiye" class="pagination">
+   
+ </ul>
+  <ul id="blog-page" class="pagination">
+ <!--   <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li> --> 
+   </ul>
+  <ul id="xiayige" class="pagination">
+    
+  </ul>
+  <div id="current-page"></div>
+</nav>
+
+</div>
+
+
+
+<div id="admin-login-modal" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">用户登录</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          
+        <div class="row">
+			  <div class="form-group">
+			    <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+			    <div class="col-sm-10">
+			    <input id="user-input" type="text" class="form-control" id="username" placeholder="Username">
+			    </div> 
+			  </div>
+        </div><br>
+        <div class="row">
+		    <div class="form-group">
+		    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+		    <div class="col-sm-10">
+		    <input id="pass-input" type="password" class="form-control" id="inputPassword3" placeholder="Password">
+		   	</div>
+		 	</div>
+		 	 <div id="tishi"></div>
+        </div>
+       
+     
+       
+   
+            <div class="col-sm-9">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="user-submit" type="button" class="btn btn-primary">登录</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="boke.po">
+	<class name="ResourceType" table="resourcetype">
+		<id name="rtid" type="string" column="rtid">
+			<generator class="uuid"/>
+		</id>
+
+		<property name="rtname" column="rtname" type="string" />
+		<set name="resources" inverse="true" cascade="all" lazy="false">
+			<!-- key元素用于指定关联的字段 -->
+			<key column="rtid"/>
+			<!-- 一个资源类型对应多个资源 -->
+			<one-to-many class="Resource"/>
+		</set>	 
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="static/js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var url = decodeURI(window.location.href);
+	var wordname = url.split("?")[1];
+	//alert(wordname);
+	var b = "<img src='"+wordname+"'>"
+	$("#tupian").html(b);
+})
+</script>
+<style>
+        body{ margin:0; padding:0; }
+	div{ width:80%; height:600px; border: thin solid #F00; margin:0 auto; }/*这里的width height 大于图片的宽高*/
+	table{ height:100%; width:100%; text-align:center;}
+ </style>
+</head>
+<body>
+ <div>
+            <table>
+                <tr>
+                    <td id=tupian>
+                       
+                    </td>
+                </tr>
+            </table>
+        </div>
+</body>
+</html>

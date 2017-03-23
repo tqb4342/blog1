@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="boke.po">
+	<class name="User" table="user">
+		<id name="id" type="integer" column="id">
+			<generator class="increment"/>
+		</id> 
+		<property name="name" column="name" type="string" not-null="true"/> 
+		<property name="password" column="password" type="string" not-null="true"/>  
+		<property name="author" column="author" type="string" not-null="true"/>  
+	 <set name="blog" cascade="delete" lazy="false"  inverse="true" order-by="bid desc" >
+			<key column="use_uid" update="false" not-null="true"/>
+			<one-to-many class="boke.po.Blog"  ></one-to-many>
+	</set> 
+	
+	<set name="com" cascade="delete" lazy="false"  inverse="true" order-by="bid desc" >
+			<key column="uid" update="false" not-null="true"/>
+			<one-to-many class="boke.po.Comments"  ></one-to-many>
+	</set> 
+	</class>
+</hibernate-mapping>

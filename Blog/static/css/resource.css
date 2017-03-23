@@ -1,0 +1,114 @@
+@CHARSET "UTF-8";
+
+body{
+	padding-left:150px;
+	padding-top: 45px;
+}
+
+.main{
+	width:100%;
+}
+
+.main_left{
+	float:left;
+	width: 20%; 
+	height:600px 
+}
+
+.main_right{
+	float:left;
+	width: 70%; 
+	height:600px;
+	text-align:center;
+}
+
+.table{
+	margin:auto
+}
+
+
+th{
+	text-align:center;
+}
+
+
+#upload-box{
+	padding-left:60px;
+}
+#upload-tip{
+	color:red;
+}
+
+
+//checkbox样式
+.demo--label{
+	margin:20px 20px 0 0;
+	display:inline-block
+}
+
+.demo--radio{
+	display:none
+}
+.demo--radioInput{
+	background-color:#fff;
+	border:1px solid rgba(0,0,0,0.15);
+	border-radius:100%;
+	display:inline-block;
+	height:16px;
+	margin-right:10px;
+	margin-top:-1px;
+	vertical-align:middle;
+	width:16px;
+	line-height:1
+}
+.demo--radio:checked + .demo--radioInput:after{
+	background-color:#57ad68;
+	border-radius:100%;
+	content:'';
+	display:inline-block;
+	height:12px;
+	margin:2px;
+	width:12px
+}
+.demo--checkbox.demo--radioInput,.demo--radio:checked + .demo--checkbox.demo--radioInput:after{
+	border-radius:0
+}
+
+
+//分页样式
+
+.table-foot{
+	font: 14px arial;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+.table-foot span{
+    display: inline-block;
+    vertical-align: text-bottom;
+    text-align: center;
+    line-height: 34px;
+    text-decoration: none;
+    overflow: hidden;
+    margin-right: 9px;
+    background: #fff;
+}
+.currentPage{
+	height: 36px;
+	width: 36px;
+}
+.pageNumber{
+	width:34px;
+	height: 34px;
+	border: 1px solid #e1e2e3;
+    cursor: pointer;
+    color:rgb(0,0,204);
+}
+.pageNumber:hover{
+	border-color: #3388ff;
+	background-color: #f2f8ff;
+}
+#prePage,#nextPage{
+	padding: 0 18px;
+	width:auto;
+	height: 34px;
+}

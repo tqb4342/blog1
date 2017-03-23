@@ -1,0 +1,23 @@
+.bt{
+	font-size: 70px;
+}
+.bt1{
+	font-size: 60px;
+}
+#zhuce{
+	width: 750px;
+}
+.foot {
+	width: 1000px;
+	height: 50px;
+	margin: 50px auto 20px;
+	clear: both;
+	color: rgb(110, 110, 110);
+	
+}
+#lab{
+	color: white;
+}
+#zc-tishi{
+	color:red;
+}
